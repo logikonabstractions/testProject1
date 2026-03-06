@@ -2,6 +2,9 @@
 
 This document is human-oriented and not to be considered for agent workflows.
 
+## NOTES from testProject1
+	- 
+
 ## USAGE
 	- create a new branch from `vibeCoding/basic`
 	- update relevant files (architecture.md, plan.md etc.) to describe the tasks you want done
