@@ -292,3 +292,48 @@ The response must provide one or more architectural component, adhering to this 
 - What user access model is required at launch: anonymous conversions only, authenticated users only, or mixed mode?
 - Which conversion quality guarantees are required for each format family (best-effort vs strict fidelity targets)?
 - What retention period and deletion guarantees should apply to uploaded and converted files?
+
+
+## graph rep
+
+                   ┌──────────────────────────┐
+                   │        Web Browser       │
+                   │ upload / status /        │
+                   │       download           │
+                   └────────────┬─────────────┘
+                                │
+                                ▼
+                 ┌──────────────────────────────┐
+                 │ 10 — Web Conversion          │
+                 │      Experience              │
+                 │        (Frontend)            │
+                 └────────────┬─────────────────┘
+                              │
+                              ▼
+                 ┌──────────────────────────────┐
+                 │ 20 — Conversion API &        │
+                 │      Job Orchestrator        │
+                 │   (control plane)            │
+                 └───────┬───────────────┬──────┘
+                         │               │
+                         │               │ policy / auth
+                         ▼               ▼
+        ┌────────────────────────┐   ┌────────────────────────┐
+        │ 40 — Async Work &      │   │ 60 — Identity, Policy, │
+        │      Event Backbone    │   │      Trust Control     │
+        │   (queues / events)    │   │                        │
+        └───────────┬────────────┘   └────────────────────────┘
+                    │
+                    ▼
+        ┌────────────────────────┐
+        │ 30 — Conversion        │
+        │      Execution Pipeline│
+        │      (workers)         │
+        └───────────┬────────────┘
+                    │
+                    ▼
+        ┌────────────────────────┐
+        │ 50 — Artifact &        │
+        │      Metadata Store    │
+        │  files + job metadata  │
+        └────────────────────────┘
