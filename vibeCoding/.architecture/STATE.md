@@ -19,30 +19,33 @@ This file keeps track of architectural discussions. Mostly when tricker issues n
 ## Current focus
 
 - Revision ID: Arch.0.1
-- Status: NOT_STARTED  <!-- one of: NOT_STARTED | IN_PROGRESS | IN_REVIEW | DONE -->
+- Status: IN_REVIEW  <!-- one of: NOT_STARTED | IN_PROGRESS | IN_REVIEW | DONE -->
 
 ## Objective (current draft)
-<!-- 1 sentence. Keep aligned with `.architecture/ARCHITECTURE_DESCRIPTION.md`. -->
+Design a cloud-native architecture for browser-driven document conversion across text and geospatial formats with asynchronous processing and secure result retrieval.
 
 ## Active assumptions / constraints
 <!-- Keep only the assumptions or constraints that materially affect the current architecture draft. -->
-- <assumption or constraint>
+- Cloud-hosted deployment and browser-first interaction model.
+- Media conversion (audio/video/image) remains out of scope.
+- Architecture must stay technology-agnostic and role-based.
 
 ## Work log (current session)
 <!-- Append-only bullets for what changed and why. Prefer file/section references. -->
-- YYYY-MM-DD: <change made and reason>
+- 2026-03-06: Drafted initial architecture components and end-to-end interaction model in `.architecture/ARCHITECTURE_DESCRIPTION.md`.
+- 2026-03-06: Added open architectural questions and moved status to `IN_REVIEW` pending human feedback.
 
 ## Workflow state
 <!-- Dispatcher flags. Checked = active/needed. Cleared once handled. -->
-- [ ] PROBLEM_CLARIFIED
-- [ ] DRAFT_CREATED
-- [ ] HUMAN_REVIEW_REQUIRED
+- [x] PROBLEM_CLARIFIED
+- [x] DRAFT_CREATED
+- [x] HUMAN_REVIEW_REQUIRED
 - [ ] DECISIONS_CAPTURED
 
 ## Active issues
 <!-- Keep only active issues here. Move resolved items to HISTORY.md. -->
-- [ ] Arch.0.1: <short title>
+- [ ] Arch.0.1: Service policy decisions pending
   - Impact: QUESTION <!-- QUESTION | MINOR | MAJOR | BLOCKER -->
-  - Status: NOT_STARTED <!-- one of: NOT_STARTED | IN_PROGRESS | IN_REVIEW | DONE -->
-  - Unblock condition: <what must be true to proceed>
-  - Notes: <optional context>
+  - Status: IN_REVIEW <!-- one of: NOT_STARTED | IN_PROGRESS | IN_REVIEW | DONE -->
+  - Unblock condition: Human review confirms constraints for authentication posture, retention window, and max workload profile.
+  - Notes: Decisions tracked in `.architecture/PLAN.md` as Arch-0.1 to Arch-0.3.

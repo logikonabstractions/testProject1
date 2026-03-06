@@ -38,21 +38,64 @@ Each item should contain:
 
 ## Active architecture questions
 
-### Arch-0.0 — <short title>
+### Arch-0.1 — Identity requirement for conversion requests
 
-- Type: <CLARIFICATION | DECISION | INVESTIGATION | ASSUMPTION_VALIDATION | RISK_REVIEW>
-- Status: <OPEN | IN_PROGRESS | BLOCKED | DECISION_REQUIRED | RESOLVED>
+- Type: DECISION
+- Status: DECISION_REQUIRED
 - Related system / draft:
-  - <system name or architecture draft identifier>
+  - Arch.0.1
 - Why it matters:
-  - <why this question materially affects the architecture>
+  - Authentication posture determines trust boundaries, abuse controls, and user ownership model for artifacts.
 - Known options / hypotheses:
-  - <option or hypothesis>
+  - Require authenticated users for all conversions.
+  - Allow anonymous conversions with stricter size/rate limits.
+  - Support both modes with policy-based gating.
 - Required input / evidence:
-  - <what information, analysis, or human decision is needed>
+  - Product decision on user onboarding friction versus abuse risk tolerance.
 - Resolution criteria:
-  - <what must be true for this item to be considered resolved>
+  - Explicit policy for who can submit requests and retrieve results.
 - Affected sections:
-  - <component ids / architecture sections / document paths>
+  - `.architecture/ARCHITECTURE_DESCRIPTION.md` (components 10, 20, 60; system-wide security concerns)
 - Notes:
-  - <optional>
+  - Current draft assumes authentication is available but not mandated.
+
+### Arch-0.2 — File retention and deletion policy
+
+- Type: DECISION
+- Status: DECISION_REQUIRED
+- Related system / draft:
+  - Arch.0.1
+- Why it matters:
+  - Retention windows impact storage cost, compliance exposure, and user experience for delayed downloads.
+- Known options / hypotheses:
+  - Short retention with mandatory immediate download.
+  - Configurable retention by service tier.
+  - User-controlled deletion with hard maximum retention.
+- Required input / evidence:
+  - Business and compliance requirements for stored customer files.
+- Resolution criteria:
+  - Defined default retention, max retention, and deletion guarantees.
+- Affected sections:
+  - `.architecture/ARCHITECTURE_DESCRIPTION.md` (component 50; compliance and reliability concerns)
+- Notes:
+  - Current draft marks retention as a system-wide concern without fixed thresholds.
+
+### Arch-0.3 — Service envelope for workload limits
+
+- Type: CLARIFICATION
+- Status: OPEN
+- Related system / draft:
+  - Arch.0.1
+- Why it matters:
+  - Max file size, expected throughput, and duration targets shape queueing, scaling, and SLA design.
+- Known options / hypotheses:
+  - Interactive-first envelope with lower file-size limits.
+  - Batch-friendly envelope with longer processing windows.
+- Required input / evidence:
+  - Product-level SLO expectations and anticipated usage profile.
+- Resolution criteria:
+  - Documented upper bounds for accepted file size and target completion profile.
+- Affected sections:
+  - `.architecture/ARCHITECTURE_DESCRIPTION.md` (components 30, 40, 50; performance and reliability concerns)
+- Notes:
+  - This clarification can be resolved before any component-level deep dive.
