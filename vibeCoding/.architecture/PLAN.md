@@ -38,21 +38,45 @@ Each item should contain:
 
 ## Active architecture questions
 
-### Arch-0.0 — <short title>
+### Arch-0.1 — Launch user access mode
 
-- Type: <CLARIFICATION | DECISION | INVESTIGATION | ASSUMPTION_VALIDATION | RISK_REVIEW>
-- Status: <OPEN | IN_PROGRESS | BLOCKED | DECISION_REQUIRED | RESOLVED>
+- Type: DECISION
+- Status: DECISION_REQUIRED
 - Related system / draft:
-  - <system name or architecture draft identifier>
+  - Cloud-native document conversion architecture (Arch.0.1)
 - Why it matters:
-  - <why this question materially affects the architecture>
+  - The launch access model determines identity complexity, authorization policy depth, and user experience flows.
 - Known options / hypotheses:
-  - <option or hypothesis>
+  - Anonymous-only launch with lightweight abuse controls.
+  - Authenticated-only launch with user-scoped job history.
+  - Mixed mode where anonymous is allowed with stricter limits.
 - Required input / evidence:
-  - <what information, analysis, or human decision is needed>
+  - Product decision on expected user lifecycle and abuse tolerance.
 - Resolution criteria:
-  - <what must be true for this item to be considered resolved>
+  - A single launch access model is selected and reflected in components 10, 20, and 60.
 - Affected sections:
-  - <component ids / architecture sections / document paths>
+  - `.architecture/ARCHITECTURE_DESCRIPTION.md` (components 10, 20, 60; system-wide security concerns)
+  - `.architecture/STATE.md` (active issue Arch.0.1)
 - Notes:
-  - <optional>
+  - Decision can be revisited for later revisions but must be explicit for Arch.0.1 completion.
+
+### Arch-0.2 — Conversion fidelity targets by format family
+
+- Type: CLARIFICATION
+- Status: OPEN
+- Related system / draft:
+  - Cloud-native document conversion architecture (Arch.0.1)
+- Why it matters:
+  - Fidelity expectations influence pipeline complexity, validation responsibilities, and error-handling semantics.
+- Known options / hypotheses:
+  - Best-effort conversion for all formats.
+  - Strict fidelity targets for selected business-critical format pairs.
+  - Tiered approach with documented quality classes.
+- Required input / evidence:
+  - Product quality requirements or acceptance criteria per format family.
+- Resolution criteria:
+  - At least one explicit fidelity policy is adopted and reflected in component 30 responsibilities.
+- Affected sections:
+  - `.architecture/ARCHITECTURE_DESCRIPTION.md` (component 30 and open questions)
+- Notes:
+  - This is a clarifying requirement rather than a hard blocker for review.
