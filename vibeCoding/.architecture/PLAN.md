@@ -38,21 +38,26 @@ Each item should contain:
 
 ## Active architecture questions
 
-### Arch-0.0 — <short title>
+### Arch-0.1 — Baseline access and retention policy model
 
-- Type: <CLARIFICATION | DECISION | INVESTIGATION | ASSUMPTION_VALIDATION | RISK_REVIEW>
-- Status: <OPEN | IN_PROGRESS | BLOCKED | DECISION_REQUIRED | RESOLVED>
+- Type: DECISION
+- Status: DECISION_REQUIRED
 - Related system / draft:
-  - <system name or architecture draft identifier>
+  - Cloud-native document conversion architecture (Arch.0.1)
 - Why it matters:
-  - <why this question materially affects the architecture>
+  - Submission quotas, download sharing, and job-history retention strongly affect security boundaries, storage lifecycle, and user experience expectations.
 - Known options / hypotheses:
-  - <option or hypothesis>
+  - Strict temporary model: anonymous-first, no sharing, short retention windows.
+  - Hybrid model: optional accounts with higher quotas and limited-duration sharing links.
+  - Account-centric model: authenticated usage required for persistent history and stronger access controls.
 - Required input / evidence:
-  - <what information, analysis, or human decision is needed>
+  - Product direction for anonymous vs authenticated usage.
+  - Acceptable retention and deletion expectations.
+  - Policy posture on third-party download link sharing.
 - Resolution criteria:
-  - <what must be true for this item to be considered resolved>
+  - Clear approval of one policy direction with baseline quota and retention targets.
 - Affected sections:
-  - <component ids / architecture sections / document paths>
+  - `.architecture/ARCHITECTURE_DESCRIPTION.md` (Assumptions, Components 20/30/50, Open questions)
+  - `.architecture/STATE.md` (Active issues)
 - Notes:
-  - <optional>
+  - Keep abstract and policy-level; implementation choices remain out of scope.
