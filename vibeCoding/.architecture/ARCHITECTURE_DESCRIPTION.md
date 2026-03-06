@@ -8,22 +8,25 @@ The response must provide one or more architectural component, adhering to this 
 ## Objective
 
 - System:
-  - <what system is being designed>
+  - We want to design a cloud-native, document-conversion application.
 - Users / actors:
-  - <who it serves>
+  - Browser-based users on the web accessing a website to convert files to different formats
 - Primary outcome:
-  - <what it must enable>
+  - Allows a host of conversion for different common filestypes
 
 ## Scope boundaries
 
 - In scope:
-  - <items>
+  - Common text files formats such as docx, docs, markdown, raw text, PDF, rst...
+  - Common geo files such as gpx, kml, kmz, geojson
 - Out of scope:
-  - <items>
+  - Videos, photos, audio and media files
 
 ## Assumptions
 
-- <assumptions>
+- The application will live in the cloud
+- users with upload their files via a web browser
+- they will get their files back via file download after the conversion is finished
 
 ## Architectural components
 
