@@ -219,3 +219,42 @@ The response must provide one or more architectural component, adhering to this 
 - Should this architecture include authenticated user accounts at launch, or support anonymous conversion sessions with short-lived access scopes?
 - What is the maximum file size target and expected daily conversion volume that should guide capacity and queue policies?
 - Are there any jurisdictional or data residency constraints that affect artifact placement and retention?
+
+
+## Graph rep
+
+                   ┌──────────────────────────┐
+                   │        Web Browser       │
+                   │  (User uploads/download) │
+                   └─────────────┬────────────┘
+                                 │
+                                 ▼
+                     ┌───────────────────────┐
+                     │ 10 — Web Conversion   │
+                     │      Experience       │
+                     │ (Frontend UI)        │
+                     └──────────┬────────────┘
+                                │ API requests
+                                ▼
+                     ┌───────────────────────┐
+                     │ 20 — Conversion       │
+                     │      Control API      │
+                     │ (Job lifecycle +      │
+                     │  orchestration)       │
+                     └───────┬───────┬───────┘
+                             │       │
+                 Job control │       │ File access
+                             ▼       ▼
+               ┌────────────────┐   ┌─────────────────────┐
+               │ 40 — Conversion│   │ 30 — File & Artifact│
+               │ Processing     │   │ Management          │
+               │ Fabric         │   │ (storage layer)     │
+               └───────┬────────┘   └─────────┬───────────┘
+                       │                      │
+                       │ reads source         │ stores
+                       │ writes output        │ artifacts
+                       ▼                      ▼
+               ┌──────────────────────────────────┐
+               │        Converted Artifacts       │
+               │      (downloaded by users)       │
+               └──────────────────────────────────┘
