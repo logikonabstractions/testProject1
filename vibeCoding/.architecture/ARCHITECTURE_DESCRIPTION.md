@@ -249,3 +249,41 @@
 - What maximum upload size and concurrent job limits should define admission-control policy?
 - Should long-running conversions use only asynchronous completion notifications or also support bounded synchronous completion for small files?
 - What retention period should apply to converted outputs by default, and can users override it?
+
+
+## graph rep
+
+                  ┌──────────────────────────┐
+                  │        Web Browser       │
+                  │  upload / status /       │
+                  │      download            │
+                  └────────────┬─────────────┘
+                               │
+                               ▼
+                ┌──────────────────────────────┐
+                │ 10 — Web Conversion          │
+                │      Experience              │
+                │        (Frontend)            │
+                └────────────┬─────────────────┘
+                             │
+                             ▼
+                ┌──────────────────────────────┐
+                │ 20 — Conversion API Gateway  │
+                │  auth + validation + jobs    │
+                └───────┬───────────────┬──────┘
+                        │               │
+                        │               │
+                        ▼               ▼
+        ┌────────────────────────┐   ┌────────────────────────┐
+        │ 30 — Metadata &        │   │ 40 — Conversion        │
+        │      Artifact Store    │◄──┤      Execution Engine  │
+        │  jobs + input/output   │──►│      (workers)         │
+        └────────────────────────┘   └────────────────────────┘
+                        ▲
+                        │
+                        │ policy / audit / access checks
+                        │
+        ┌─────────────────────────────────────────────────────┐
+        │ 50 — Trust, Policy, and Audit Control Plane        │
+        │   identity + authorization + security audit        │
+        └─────────────────────────────────────────────────────┘
