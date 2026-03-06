@@ -1,6 +1,6 @@
 # STATE
 
-This file keeps track of architectural discussions. Mostly when tricker issues needs sorting with back & forth, or when multiple approaches would meet the objectives and the agent prefers to obtain input. 
+This file keeps track of architectural discussions. Mostly when tricker issues needs sorting with back & forth, or when multiple approaches would meet the objectives and the agent prefers to obtain input.
 
 ## Session read order
 
@@ -19,30 +19,30 @@ This file keeps track of architectural discussions. Mostly when tricker issues n
 ## Current focus
 
 - Revision ID: Arch.0.1
-- Status: NOT_STARTED  <!-- one of: NOT_STARTED | IN_PROGRESS | IN_REVIEW | DONE -->
+- Status: IN_REVIEW  <!-- one of: NOT_STARTED | IN_PROGRESS | IN_REVIEW | DONE -->
 
 ## Objective (current draft)
-<!-- 1 sentence. Keep aligned with `.architecture/ARCHITECTURE_DESCRIPTION.md`. -->
+Create a first-pass architecture draft for a cloud-native document conversion system covering text and geo file types.
 
 ## Active assumptions / constraints
-<!-- Keep only the assumptions or constraints that materially affect the current architecture draft. -->
-- <assumption or constraint>
+- The architecture must avoid concrete technology or vendor choices.
+- End users interact only through a web browser flow.
+- Media conversion use cases (video/audio/images) remain out of scope.
 
 ## Work log (current session)
-<!-- Append-only bullets for what changed and why. Prefer file/section references. -->
-- YYYY-MM-DD: <change made and reason>
+- 2026-03-06: Produced initial architecture component draft in `.architecture/ARCHITECTURE_DESCRIPTION.md`, including system-wide concerns and open questions for review.
+- 2026-03-06: Updated workflow flags and active issue state to request human review on unresolved policy and retention decisions.
+- 2026-03-06: Applied human decision for Arch-0.1: public anonymous access with no authentication requirement.
 
 ## Workflow state
-<!-- Dispatcher flags. Checked = active/needed. Cleared once handled. -->
-- [ ] PROBLEM_CLARIFIED
-- [ ] DRAFT_CREATED
-- [ ] HUMAN_REVIEW_REQUIRED
-- [ ] DECISIONS_CAPTURED
+- [x] PROBLEM_CLARIFIED
+- [x] DRAFT_CREATED
+- [x] HUMAN_REVIEW_REQUIRED
+- [x] DECISIONS_CAPTURED
 
 ## Active issues
-<!-- Keep only active issues here. Move resolved items to HISTORY.md. -->
-- [ ] Arch.0.1: <short title>
+- [x] Arch.0.1: Baseline policy and retention decisions required
   - Impact: QUESTION <!-- QUESTION | MINOR | MAJOR | BLOCKER -->
-  - Status: NOT_STARTED <!-- one of: NOT_STARTED | IN_PROGRESS | IN_REVIEW | DONE -->
-  - Unblock condition: <what must be true to proceed>
-  - Notes: <optional context>
+  - Status: DONE <!-- one of: NOT_STARTED | IN_PROGRESS | IN_REVIEW | DONE -->
+  - Unblock condition: None (resolved by human decision: public anonymous usage, no authentication).
+  - Notes: Resolution captured in PLAN item Arch-0.1 and HISTORY.

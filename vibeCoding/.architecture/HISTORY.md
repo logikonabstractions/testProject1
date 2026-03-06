@@ -24,16 +24,16 @@
 
 ## Resolved issues
 
-- YYYY-MM-DD — ISSUE-001: <title>
-  - Resolution: <1–2 lines>
-  - Notes: <optional>
+- 2026-03-06 — Arch-0.1: Baseline access and retention policy model
+  - Resolution: Access model resolved as public and unauthenticated; architecture updated to remove account-based assumptions.
+  - Notes: Detailed quota and artifact expiration settings remain open tuning items.
 
 ## Architectural decisions
 <!-- Keep only decisions worth preserving across revisions. -->
-- YYYY-MM-DD: <decision>
-  - Architectural components IDs (if relevant): []
-  - Rationale: <1–2 lines>
-  - Impact: <what parts of the architecture this affects>
+- 2026-03-06: Use a public anonymous access model (no authentication requirement)
+  - Architectural components IDs (if relevant): [10, 20, 30, 50]
+  - Rationale: Product direction is a publicly accessible conversion utility that supports upload-and-download workflows without accounts.
+  - Impact: Access controls rely on mediated job references, retention policy, and abuse/throttling safeguards rather than identity-based authorization.
 
 ## Superseded assumptions / changes
 <!-- Optional. Use when previous assumptions were later invalidated. -->
