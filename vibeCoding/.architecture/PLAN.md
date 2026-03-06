@@ -38,21 +38,42 @@ Each item should contain:
 
 ## Active architecture questions
 
-### Arch-0.0 — <short title>
+### Arch-0.1 — MVP identity requirement model
 
-- Type: <CLARIFICATION | DECISION | INVESTIGATION | ASSUMPTION_VALIDATION | RISK_REVIEW>
-- Status: <OPEN | IN_PROGRESS | BLOCKED | DECISION_REQUIRED | RESOLVED>
+- Type: DECISION
+- Status: DECISION_REQUIRED
 - Related system / draft:
-  - <system name or architecture draft identifier>
+  - Cloud-native document conversion platform (Arch.0.1)
 - Why it matters:
-  - <why this question materially affects the architecture>
+  - Identity posture defines access boundaries for upload/download flows and affects auditability expectations.
 - Known options / hypotheses:
-  - <option or hypothesis>
+  - Allow anonymous conversions for MVP with scoped short-lived download access.
+  - Require authenticated users for all conversions from first release.
 - Required input / evidence:
-  - <what information, analysis, or human decision is needed>
+  - Product and compliance direction on acceptable exposure and traceability requirements.
 - Resolution criteria:
-  - <what must be true for this item to be considered resolved>
+  - A single access model is selected and accepted by reviewer.
 - Affected sections:
-  - <component ids / architecture sections / document paths>
+  - `.architecture/ARCHITECTURE_DESCRIPTION.md` components 20, 50, 60 and system-wide security concerns.
 - Notes:
-  - <optional>
+  - Decision has direct impact on authorization and access-log requirements.
+
+### Arch-0.2 — Artifact retention and deletion baseline
+
+- Type: DECISION
+- Status: DECISION_REQUIRED
+- Related system / draft:
+  - Cloud-native document conversion platform (Arch.0.1)
+- Why it matters:
+  - Retention policy controls storage costs, compliance posture, and user expectations for download availability.
+- Known options / hypotheses:
+  - Very short retention window oriented to transient conversions.
+  - Configurable retention tiers based on account or request profile.
+- Required input / evidence:
+  - Product requirements for user convenience and compliance constraints for data minimization.
+- Resolution criteria:
+  - Default retention window and deletion strategy are explicitly approved.
+- Affected sections:
+  - `.architecture/ARCHITECTURE_DESCRIPTION.md` component 50 and compliance/reliability sections.
+- Notes:
+  - This decision should also define whether manual early deletion is required in MVP.
