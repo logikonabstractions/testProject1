@@ -38,21 +38,44 @@ Each item should contain:
 
 ## Active architecture questions
 
-### Arch-0.0 — <short title>
+### Arch-0.1 — MVP access model and usage limits
 
-- Type: <CLARIFICATION | DECISION | INVESTIGATION | ASSUMPTION_VALIDATION | RISK_REVIEW>
-- Status: <OPEN | IN_PROGRESS | BLOCKED | DECISION_REQUIRED | RESOLVED>
+- Type: DECISION
+- Status: DECISION_REQUIRED
 - Related system / draft:
-  - <system name or architecture draft identifier>
+  - Document conversion architecture draft Arch.0.1
 - Why it matters:
-  - <why this question materially affects the architecture>
+  - Authentication policy and file-size/throughput limits shape API boundary controls, abuse protections, and storage lifecycle behavior.
 - Known options / hypotheses:
-  - <option or hypothesis>
+  - Authenticated-only MVP with per-user quotas.
+  - Mixed anonymous + authenticated model with stricter anonymous limits.
 - Required input / evidence:
-  - <what information, analysis, or human decision is needed>
+  - Product direction on user onboarding friction vs abuse risk tolerance.
+  - Expected traffic profile and typical file sizes for early users.
 - Resolution criteria:
-  - <what must be true for this item to be considered resolved>
+  - A confirmed MVP policy for authentication requirements and hard usage limits.
 - Affected sections:
-  - <component ids / architecture sections / document paths>
+  - `.architecture/ARCHITECTURE_DESCRIPTION.md` (components 10, 20, 30, 50; system-wide concerns)
 - Notes:
-  - <optional>
+  - Decision can remain provisional if clearly time-boxed to MVP.
+
+### Arch-0.2 — Conversion capability prioritization
+
+- Type: CLARIFICATION
+- Status: OPEN
+- Related system / draft:
+  - Document conversion architecture draft Arch.0.1
+- Why it matters:
+  - The initial set of format pairs determines early conversion domain complexity and validation responsibilities.
+- Known options / hypotheses:
+  - Start with high-frequency text conversions only.
+  - Include one geospatial conversion path in MVP to validate multi-domain architecture.
+- Required input / evidence:
+  - Product ranking of most critical conversion pairs.
+  - Any known compliance/quality constraints by format family.
+- Resolution criteria:
+  - MVP conversion matrix approved for first release scope.
+- Affected sections:
+  - `.architecture/ARCHITECTURE_DESCRIPTION.md` (component 40, interaction summary, open questions)
+- Notes:
+  - Prioritization does not change macro-architecture but affects rollout sequencing.
