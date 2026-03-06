@@ -38,21 +38,45 @@ Each item should contain:
 
 ## Active architecture questions
 
-### Arch-0.0 — <short title>
+### Arch-0.1 — Initial identity and access posture
 
-- Type: <CLARIFICATION | DECISION | INVESTIGATION | ASSUMPTION_VALIDATION | RISK_REVIEW>
-- Status: <OPEN | IN_PROGRESS | BLOCKED | DECISION_REQUIRED | RESOLVED>
+- Type: DECISION
+- Status: DECISION_REQUIRED
 - Related system / draft:
-  - <system name or architecture draft identifier>
+  - Cloud-native document conversion architecture (Arch.0.1)
 - Why it matters:
-  - <why this question materially affects the architecture>
+  - Identity scope affects trust boundaries, artifact isolation, access token lifetime, and audit requirements across the entire architecture.
 - Known options / hypotheses:
-  - <option or hypothesis>
+  - Authenticated-user model from launch.
+  - Anonymous session model with short-lived scoped access.
+  - Hybrid model supporting both anonymous and authenticated flows.
 - Required input / evidence:
-  - <what information, analysis, or human decision is needed>
+  - Product decision on launch requirements for user accounts and expected usage pattern.
 - Resolution criteria:
-  - <what must be true for this item to be considered resolved>
+  - A confirmed launch posture is selected and reflected in component security notes.
 - Affected sections:
-  - <component ids / architecture sections / document paths>
+  - `.architecture/ARCHITECTURE_DESCRIPTION.md` (components 10, 20, 30; system-wide security)
+  - `.architecture/STATE.md` active issues
 - Notes:
-  - <optional>
+  - Decision should be made before finalizing architecture status as `DONE`.
+
+### Arch-0.2 — Capacity assumptions for queueing and processing model
+
+- Type: ASSUMPTION_VALIDATION
+- Status: OPEN
+- Related system / draft:
+  - Cloud-native document conversion architecture (Arch.0.1)
+- Why it matters:
+  - Throughput and file-size expectations shape control-plane limits, asynchronous backlog handling, and processor scaling policy.
+- Known options / hypotheses:
+  - Low-volume interactive usage with small files.
+  - Mixed volume including occasional large files.
+  - Sustained high volume requiring aggressive horizontal scaling.
+- Required input / evidence:
+  - Target file-size limits and expected daily/peak conversion volume.
+- Resolution criteria:
+  - Initial volume and size assumptions are documented and accepted for architecture baseline.
+- Affected sections:
+  - `.architecture/ARCHITECTURE_DESCRIPTION.md` (components 20, 30, 40; performance and reliability concerns)
+- Notes:
+  - This can remain an explicit assumption for initial draft review if product data is not yet available.
