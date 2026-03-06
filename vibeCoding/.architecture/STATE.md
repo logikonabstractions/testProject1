@@ -19,30 +19,38 @@ This file keeps track of architectural discussions. Mostly when tricker issues n
 ## Current focus
 
 - Revision ID: Arch.0.1
-- Status: NOT_STARTED  <!-- one of: NOT_STARTED | IN_PROGRESS | IN_REVIEW | DONE -->
+- Status: IN_REVIEW  <!-- one of: NOT_STARTED | IN_PROGRESS | IN_REVIEW | DONE -->
 
 ## Objective (current draft)
-<!-- 1 sentence. Keep aligned with `.architecture/ARCHITECTURE_DESCRIPTION.md`. -->
+Produce an initial architecture draft for a cloud-native web document-conversion system covering major components, interfaces, and cross-cutting concerns.
 
 ## Active assumptions / constraints
-<!-- Keep only the assumptions or constraints that materially affect the current architecture draft. -->
-- <assumption or constraint>
+
+- The architecture remains implementation-agnostic and avoids naming specific products.
+- Conversion scope includes common text and geo formats only.
+- Upload and download are browser-mediated user interactions.
 
 ## Work log (current session)
-<!-- Append-only bullets for what changed and why. Prefer file/section references. -->
-- YYYY-MM-DD: <change made and reason>
+
+- 2026-03-06: Created first complete architectural component draft in `.architecture/ARCHITECTURE_DESCRIPTION.md` based on the provided problem statement.
+- 2026-03-06: Raised unresolved architectural decision items in `.architecture/PLAN.md` for workflow mode, identity model, and retention policy.
 
 ## Workflow state
-<!-- Dispatcher flags. Checked = active/needed. Cleared once handled. -->
-- [ ] PROBLEM_CLARIFIED
-- [ ] DRAFT_CREATED
-- [ ] HUMAN_REVIEW_REQUIRED
+
+- [x] PROBLEM_CLARIFIED
+- [x] DRAFT_CREATED
+- [x] HUMAN_REVIEW_REQUIRED
 - [ ] DECISIONS_CAPTURED
 
 ## Active issues
-<!-- Keep only active issues here. Move resolved items to HISTORY.md. -->
-- [ ] Arch.0.1: <short title>
+
+- [ ] Arch.0.1: Processing model decision (synchronous vs asynchronous fast path)
   - Impact: QUESTION <!-- QUESTION | MINOR | MAJOR | BLOCKER -->
-  - Status: NOT_STARTED <!-- one of: NOT_STARTED | IN_PROGRESS | IN_REVIEW | DONE -->
-  - Unblock condition: <what must be true to proceed>
-  - Notes: <optional context>
+  - Status: IN_REVIEW <!-- one of: NOT_STARTED | IN_PROGRESS | IN_REVIEW | DONE -->
+  - Unblock condition: Human reviewer selects preferred processing interaction model.
+  - Notes: Impacts orchestration interface design, user status UX, and scalability behavior.
+- [ ] Arch.0.2: Access model decision (authenticated-only vs anonymous allowed)
+  - Impact: MAJOR <!-- QUESTION | MINOR | MAJOR | BLOCKER -->
+  - Status: IN_REVIEW <!-- one of: NOT_STARTED | IN_PROGRESS | IN_REVIEW | DONE -->
+  - Unblock condition: Human reviewer confirms required identity and access posture.
+  - Notes: Directly affects security boundary and auditability requirements.

@@ -38,21 +38,64 @@ Each item should contain:
 
 ## Active architecture questions
 
-### Arch-0.0 — <short title>
+### Arch-0.1 — Processing interaction model
 
-- Type: <CLARIFICATION | DECISION | INVESTIGATION | ASSUMPTION_VALIDATION | RISK_REVIEW>
-- Status: <OPEN | IN_PROGRESS | BLOCKED | DECISION_REQUIRED | RESOLVED>
+- Type: DECISION
+- Status: DECISION_REQUIRED
 - Related system / draft:
-  - <system name or architecture draft identifier>
+  - Cloud-native document-conversion architecture (Arch.0.1)
 - Why it matters:
-  - <why this question materially affects the architecture>
+  - Determines whether users always receive deferred job handling or can receive immediate results for small/quick conversions.
 - Known options / hypotheses:
-  - <option or hypothesis>
+  - Fully asynchronous conversion flow for all requests.
+  - Hybrid flow: synchronous fast path under defined thresholds plus asynchronous fallback.
 - Required input / evidence:
-  - <what information, analysis, or human decision is needed>
+  - Product preference for UX responsiveness vs consistency and operational simplicity.
 - Resolution criteria:
-  - <what must be true for this item to be considered resolved>
+  - A single default processing model is selected and accepted for the architecture baseline.
 - Affected sections:
-  - <component ids / architecture sections / document paths>
+  - `.architecture/ARCHITECTURE_DESCRIPTION.md` components 10, 20, 30.
 - Notes:
-  - <optional>
+  - Choice affects client UX and orchestration complexity.
+
+### Arch-0.2 — User access posture
+
+- Type: DECISION
+- Status: DECISION_REQUIRED
+- Related system / draft:
+  - Cloud-native document-conversion architecture (Arch.0.1)
+- Why it matters:
+  - Identity requirements shape security boundaries, abuse controls, and audit obligations.
+- Known options / hypotheses:
+  - Authenticated users only.
+  - Anonymous conversion allowed with stricter rate/size limits.
+  - Mixed model with optional accounts.
+- Required input / evidence:
+  - Product and governance preference on friction, accountability, and abuse tolerance.
+- Resolution criteria:
+  - Accepted access posture with explicit guardrails.
+- Affected sections:
+  - `.architecture/ARCHITECTURE_DESCRIPTION.md` components 10, 20, 40, 50.
+- Notes:
+  - Also influences incident response and data-retention policies.
+
+### Arch-0.3 — File retention policy baseline
+
+- Type: CLARIFICATION
+- Status: OPEN
+- Related system / draft:
+  - Cloud-native document-conversion architecture (Arch.0.1)
+- Why it matters:
+  - Retention duration influences privacy risk, storage cost, and user retrieval expectations.
+- Known options / hypotheses:
+  - Immediate deletion after successful download.
+  - Short fixed retention window.
+  - Configurable retention by user tier.
+- Required input / evidence:
+  - Product policy and legal/compliance constraints.
+- Resolution criteria:
+  - Baseline retention rule and deletion behavior approved.
+- Affected sections:
+  - `.architecture/ARCHITECTURE_DESCRIPTION.md` components 20 and 40, system-wide governance concerns.
+- Notes:
+  - Must be aligned with audit-trail retention requirements.
