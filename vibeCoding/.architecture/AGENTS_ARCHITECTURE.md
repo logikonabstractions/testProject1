@@ -40,8 +40,7 @@ Do **not** use concrete product names.
 
 ## Component rule
 
-Architectural components must represent **meaningful system capabilities**.
-They must be large enough to matter at system-design level and small enough to have a clear responsibility.
+Architectural components must represent **one specific, meaningful system capabilities**. At the next abstraction layer, we should be able to select one specific technology to implement this capability.
 
 Do not model low-level implementation artifacts as architectural components.
 
