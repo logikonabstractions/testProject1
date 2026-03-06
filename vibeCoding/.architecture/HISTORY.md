@@ -8,35 +8,31 @@
 
 ## Completed architecture drafts
 <!-- Append entries as architecture drafts are completed, updated, or approved. -->
-- YYYY-MM-DD — <system or project name>
+- 2026-03-06 — Cloud-native document conversion system
   - Draft file: `.architecture/ARCHITECTURE_DESCRIPTION.md`
   - Summary:
-    - <major architectural outcome>
-    - <major architectural outcome>
+    - Established technology-agnostic architecture with components 10–50 covering user experience, orchestration, file lifecycle, conversion execution, and cross-cutting platform capabilities.
+    - Captured primary request/data/event flows, system-wide concerns, and unresolved architectural decisions for MVP scoping.
 
 ## Review history
 <!-- Use this for architecture revision rounds -->
-- YYYY-MM-DD — Review round <n>
-  - Architectural components IDs (if relevant): []
+- 2026-03-06 — Review round 1
+  - Architectural components IDs (if relevant): [10, 20, 30, 40, 50]
   - Feedback summary (e.g. from follow-up prompts etc.)
-    - <what changed or was requested>
-  - Result: <accepted | changes requested | blocked>
+    - Initial architecture draft requested for architecture design mode.
+  - Result: changes requested
 
 ## Resolved issues
 
-- YYYY-MM-DD — ISSUE-001: <title>
-  - Resolution: <1–2 lines>
-  - Notes: <optional>
+- None yet.
 
 ## Architectural decisions
 <!-- Keep only decisions worth preserving across revisions. -->
-- YYYY-MM-DD: <decision>
-  - Architectural components IDs (if relevant): []
-  - Rationale: <1–2 lines>
-  - Impact: <what parts of the architecture this affects>
+- 2026-03-06: Adopted a five-component macro-architecture with explicit separation between orchestration, conversion execution, and file lifecycle management.
+  - Architectural components IDs (if relevant): [20, 30, 40]
+  - Rationale: Separation supports incremental MVP delivery while reducing coupling between request handling and conversion mechanics.
+  - Impact: Enables independent scaling and future capability expansion without changing core client-facing flow.
 
 ## Superseded assumptions / changes
 <!-- Optional. Use when previous assumptions were later invalidated. -->
-- YYYY-MM-DD: <old assumption or prior direction>
-  - Replaced by: <new direction>
-  - Reason: <why it changed>
+- None.
