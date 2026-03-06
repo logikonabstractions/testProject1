@@ -38,21 +38,23 @@ Each item should contain:
 
 ## Active architecture questions
 
-### Arch-0.0 — <short title>
+### Arch-0.1 — MVP identity and completion signaling strategy
 
-- Type: <CLARIFICATION | DECISION | INVESTIGATION | ASSUMPTION_VALIDATION | RISK_REVIEW>
-- Status: <OPEN | IN_PROGRESS | BLOCKED | DECISION_REQUIRED | RESOLVED>
+- Type: DECISION
+- Status: DECISION_REQUIRED
 - Related system / draft:
-  - <system name or architecture draft identifier>
+  - Cloud-native document conversion architecture (Arch.0.1)
 - Why it matters:
-  - <why this question materially affects the architecture>
+  - Identity posture and completion signaling influence trust boundaries, API complexity, and user experience for the first release.
 - Known options / hypotheses:
-  - <option or hypothesis>
+  - Option A: authenticated accounts required, polling-only completion status.
+  - Option B: anonymous conversions with temporary tokenized access, polling-only completion status.
+  - Option C: authenticated accounts plus push-based completion signaling.
 - Required input / evidence:
-  - <what information, analysis, or human decision is needed>
+  - Product direction on friction tolerance for first-time users and expected conversion volume/latency.
 - Resolution criteria:
-  - <what must be true for this item to be considered resolved>
+  - A single MVP option is selected and reflected in components 10, 20, and 80.
 - Affected sections:
-  - <component ids / architecture sections / document paths>
+  - `.architecture/ARCHITECTURE_DESCRIPTION.md` (components 10, 20, 80; open questions)
 - Notes:
-  - <optional>
+  - Decision can be revisited after MVP telemetry, but one baseline is needed for implementation planning.
