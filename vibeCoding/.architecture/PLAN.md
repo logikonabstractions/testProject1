@@ -38,21 +38,44 @@ Each item should contain:
 
 ## Active architecture questions
 
-### Arch-0.0 — <short title>
+### Arch-0.1 — Ordering and dispatch guarantees for conversion workload
 
-- Type: <CLARIFICATION | DECISION | INVESTIGATION | ASSUMPTION_VALIDATION | RISK_REVIEW>
-- Status: <OPEN | IN_PROGRESS | BLOCKED | DECISION_REQUIRED | RESOLVED>
+- Type: DECISION
+- Status: DECISION_REQUIRED
 - Related system / draft:
-  - <system name or architecture draft identifier>
+  - Arch.0.1
 - Why it matters:
-  - <why this question materially affects the architecture>
+  - Dispatch semantics influence throughput, fairness, and predictability for user-visible completion times.
 - Known options / hypotheses:
-  - <option or hypothesis>
+  - Strict ordering by user/session job stream.
+  - Best-effort parallel dispatch with idempotent completion handling.
+  - Hybrid policy (ordered within a narrow scope, parallel globally).
 - Required input / evidence:
-  - <what information, analysis, or human decision is needed>
+  - Product expectation on UX predictability versus raw throughput for MVP.
 - Resolution criteria:
-  - <what must be true for this item to be considered resolved>
+  - Clear rule selected for dispatch/ordering guarantees and reflected in component interaction constraints.
 - Affected sections:
-  - <component ids / architecture sections / document paths>
+  - `.architecture/ARCHITECTURE_DESCRIPTION.md` (Components 20, 30, 50; open questions)
 - Notes:
-  - <optional>
+  - Decision can remain provisional for MVP but must be explicit.
+
+### Arch-0.2 — Access model for MVP (anonymous vs authenticated)
+
+- Type: DECISION
+- Status: DECISION_REQUIRED
+- Related system / draft:
+  - Arch.0.1
+- Why it matters:
+  - Authentication requirements materially change security boundaries, retention risk, and abuse controls.
+- Known options / hypotheses:
+  - Anonymous conversion with strict rate and retention limits.
+  - Mandatory authenticated access from day one.
+  - Mixed model: anonymous trial with authenticated higher limits.
+- Required input / evidence:
+  - Product and compliance expectations for user identity, quota management, and auditability.
+- Resolution criteria:
+  - MVP access model chosen and translated into explicit constraints for components 10, 20, and 60.
+- Affected sections:
+  - `.architecture/ARCHITECTURE_DESCRIPTION.md` (Components 10, 20, 60; system-wide concerns)
+- Notes:
+  - Closely related to retention and policy governance requirements.
