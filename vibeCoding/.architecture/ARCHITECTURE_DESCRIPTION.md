@@ -272,3 +272,44 @@ The response provides an architectural component breakdown for a cloud-native do
 - What maximum upload size and daily conversion quota should define baseline policy for anonymous and authenticated users?
 - Should users be able to share download links with third parties, and if yes, under what trust/expiration model?
 - Is there a requirement for long-term job history retention beyond temporary conversion workflows?
+
+## Graph
+
+
+                  ┌──────────────────────────┐
+                  │        Web Browser       │
+                  │   (upload / status /     │
+                  │        download)         │
+                  └────────────┬─────────────┘
+                               │
+                               ▼
+                ┌──────────────────────────────┐
+                │ 10 — Web Conversion          │
+                │      Experience              │
+                │        (Frontend)            │
+                └────────────┬─────────────────┘
+                             │
+                             ▼
+                ┌──────────────────────────────┐
+                │ 20 — Job Intake & Lifecycle  │
+                │      API                      │
+                │ (validation + job tracking)  │
+                └───────┬───────────────┬──────┘
+                        │               │
+                        │               │
+                        ▼               ▼
+        ┌────────────────────────┐   ┌────────────────────────┐
+        │ 30 — File & Artifact   │   │ 40 — Conversion        │
+        │      Management        │◄──┤      Execution         │
+        │      (storage)         │──►│      Orchestrator      │
+        └────────────────────────┘   └────────────────────────┘
+                        ▲                       │
+                        │                       │
+                        └──────────────┬────────┘
+                                       │
+                                       ▼
+             ┌──────────────────────────────────────────┐
+             │ 50 — Platform Security, Policy,          │
+             │      and Operations Backbone             │
+             │ (auth/policy/quotas/telemetry/audit)     │
+             └──────────────────────────────────────────┘
