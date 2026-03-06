@@ -38,21 +38,62 @@ Each item should contain:
 
 ## Active architecture questions
 
-### Arch-0.0 — <short title>
+### Arch-0.1 — Conversion admission-control limits
 
-- Type: <CLARIFICATION | DECISION | INVESTIGATION | ASSUMPTION_VALIDATION | RISK_REVIEW>
-- Status: <OPEN | IN_PROGRESS | BLOCKED | DECISION_REQUIRED | RESOLVED>
+- Type: DECISION
+- Status: DECISION_REQUIRED
 - Related system / draft:
-  - <system name or architecture draft identifier>
+  - Cloud-native document-conversion architecture (Arch.0.1)
 - Why it matters:
-  - <why this question materially affects the architecture>
+  - Upload size and concurrency limits shape gateway validation, queue pressure, and user experience.
 - Known options / hypotheses:
-  - <option or hypothesis>
+  - Conservative default limits with explicit expansion path.
+  - Tiered limits by user class.
 - Required input / evidence:
-  - <what information, analysis, or human decision is needed>
+  - Expected usage profile and acceptable processing-time targets.
 - Resolution criteria:
-  - <what must be true for this item to be considered resolved>
+  - Explicitly defined maximum upload size and concurrent jobs per user/session.
 - Affected sections:
-  - <component ids / architecture sections / document paths>
+  - `.architecture/ARCHITECTURE_DESCRIPTION.md` (components 20, 40; open questions)
 - Notes:
-  - <optional>
+  - Pending human decision.
+
+### Arch-0.2 — Completion model for short-running conversions
+
+- Type: DECISION
+- Status: DECISION_REQUIRED
+- Related system / draft:
+  - Cloud-native document-conversion architecture (Arch.0.1)
+- Why it matters:
+  - Completion model affects user responsiveness and API orchestration complexity.
+- Known options / hypotheses:
+  - Fully asynchronous completion for all conversions.
+  - Hybrid model allowing bounded synchronous completion for small jobs.
+- Required input / evidence:
+  - Product preference for UX simplicity versus reduced waiting hops.
+- Resolution criteria:
+  - Chosen default completion behavior and criteria for alternate path, if any.
+- Affected sections:
+  - `.architecture/ARCHITECTURE_DESCRIPTION.md` (components 10, 20, 40; open questions)
+- Notes:
+  - Pending human decision.
+
+### Arch-0.3 — Default artifact retention policy
+
+- Type: DECISION
+- Status: DECISION_REQUIRED
+- Related system / draft:
+  - Cloud-native document-conversion architecture (Arch.0.1)
+- Why it matters:
+  - Retention period drives storage lifecycle design, governance expectations, and user trust.
+- Known options / hypotheses:
+  - Fixed default retention window.
+  - Configurable retention within bounded policy limits.
+- Required input / evidence:
+  - Compliance expectations and operational storage constraints.
+- Resolution criteria:
+  - Documented default retention period and override policy.
+- Affected sections:
+  - `.architecture/ARCHITECTURE_DESCRIPTION.md` (components 30, 50; open questions)
+- Notes:
+  - Pending human decision.
